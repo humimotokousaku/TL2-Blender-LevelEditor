@@ -21,6 +21,8 @@ from .add_collider import MYADDON_OT_add_collider
 # カスタムプロパティ['disabled']追加
 from .is_disabled import MYADDON_OT_is_disabled
 from .is_disabled import OBJECT_PT_is_disabled
+from .spawn import MYADDON_OT_spawn
+from .spawn import MYADDON_OT_create_spawn
 
 #ブレンダーに登録するアドオン情報
 bl_info = {
@@ -208,6 +210,7 @@ class TOPBAR_MT_my_menu(bpy.types.Menu):
         self.layout.operator(MYADDON_OT_stretch_vertex.bl_idname, text=MYADDON_OT_stretch_vertex.bl_label)
         self.layout.operator(MYADDON_OT_create_ico_sphere.bl_idname, text=MYADDON_OT_create_ico_sphere.bl_label)
         self.layout.operator(MYADDON_OT_export_scene.bl_idname, text=MYADDON_OT_export_scene.bl_label)
+        self.layout.operator(MYADDON_OT_create_spawn.bl_idname, text=MYADDON_OT_create_spawn.bl_label)
         
     # 既存のメニューにサブメニューを追加
     def submenu(self, context):
@@ -226,13 +229,15 @@ classes = (
     MYADDON_OT_add_filename,
     #カスタムプロパティ_コライダー
     MYADDON_OT_add_collider,
-
+    #カスタムプロパティ_無効フラグ
     MYADDON_OT_is_disabled,
+    MYADDON_OT_spawn,
+    MYADDON_OT_create_spawn,
     #パネルクラス_ファイル名
     OBJECT_PT_file_name,
     #パネルクラス_コライダー
     OBJECT_PT_collider,
-
+    #パネルクラス_無効フラグ
     OBJECT_PT_is_disabled,
     #トップバーの拡張メニュー
     TOPBAR_MT_my_menu,
