@@ -23,6 +23,8 @@ from .is_disabled import MYADDON_OT_is_disabled
 from .is_disabled import OBJECT_PT_is_disabled
 from .spawn import MYADDON_OT_spawn
 from .spawn import MYADDON_OT_create_spawn
+from .spawn import MYADDON_OT_create_player_spawn
+from .spawn import MYADDON_OT_create_enemy_spawn
 
 #ブレンダーに登録するアドオン情報
 bl_info = {
@@ -210,7 +212,8 @@ class TOPBAR_MT_my_menu(bpy.types.Menu):
         self.layout.operator(MYADDON_OT_stretch_vertex.bl_idname, text=MYADDON_OT_stretch_vertex.bl_label)
         self.layout.operator(MYADDON_OT_create_ico_sphere.bl_idname, text=MYADDON_OT_create_ico_sphere.bl_label)
         self.layout.operator(MYADDON_OT_export_scene.bl_idname, text=MYADDON_OT_export_scene.bl_label)
-        self.layout.operator(MYADDON_OT_create_spawn.bl_idname, text=MYADDON_OT_create_spawn.bl_label)
+        self.layout.operator(MYADDON_OT_create_player_spawn.bl_idname, text=MYADDON_OT_create_player_spawn.bl_label)
+        self.layout.operator(MYADDON_OT_create_enemy_spawn.bl_idname, text=MYADDON_OT_create_enemy_spawn.bl_label)
         
     # 既存のメニューにサブメニューを追加
     def submenu(self, context):
@@ -233,6 +236,8 @@ classes = (
     MYADDON_OT_is_disabled,
     MYADDON_OT_spawn,
     MYADDON_OT_create_spawn,
+    MYADDON_OT_create_player_spawn,
+    MYADDON_OT_create_enemy_spawn,
     #パネルクラス_ファイル名
     OBJECT_PT_file_name,
     #パネルクラス_コライダー
