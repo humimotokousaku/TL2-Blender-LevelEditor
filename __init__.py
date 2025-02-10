@@ -8,6 +8,20 @@ import gpu_extras.batch
 import mathutils
 import json
 
+# 頂点引き延ばし
+from .stretch_vertex import MYADDON_OT_stretch_vertex
+# ICO球生成
+from .create_ico_sphere import MYADDON_OT_create_ico_sphere
+# シーン出力
+from .export_scene import MYADDON_OT_export_scene
+# カスタムプロパティ['file_name']追加
+from .add_filename import MYADDON_OT_add_filename
+# カスタムプロパティ['collider']追加
+from .add_collider import MYADDON_OT_add_collider
+# カスタムプロパティ['disabled']追加
+from .is_disabled import MYADDON_OT_is_disabled
+from .is_disabled import OBJECT_PT_is_disabled
+
 #ブレンダーに登録するアドオン情報
 bl_info = {
     "name": "レベルエディタ",
@@ -50,25 +64,6 @@ def unregister():
 #テスト実行用コード
 if __name__ == "__main__":
     register()
-
-# オペレータクラス↓
-
-# 頂点引き延ばし
-from .stretch_vertex import MYADDON_OT_stretch_vertex
-# ICO球生成
-from .create_ico_sphere import MYADDON_OT_create_ico_sphere
-# Primitiveの操作クラス↑
-
-# シーン出力
-from .export_scene import MYADDON_OT_export_scene
-
-# カスタムプロパティ['file_name']追加
-from .add_filename import MYADDON_OT_add_filename
-
-# カスタムプロパティ['collider']追加
-from .add_collider import MYADDON_OT_add_collider
-
-# オペレータクラス↑
 
 # パネルクラス↓
 # ファイル名記入
@@ -231,10 +226,14 @@ classes = (
     MYADDON_OT_add_filename,
     #カスタムプロパティ_コライダー
     MYADDON_OT_add_collider,
+
+    MYADDON_OT_is_disabled,
     #パネルクラス_ファイル名
     OBJECT_PT_file_name,
     #パネルクラス_コライダー
     OBJECT_PT_collider,
+
+    OBJECT_PT_is_disabled,
     #トップバーの拡張メニュー
     TOPBAR_MT_my_menu,
 )

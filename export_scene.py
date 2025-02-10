@@ -9,7 +9,6 @@ class MYADDON_OT_export_scene(bpy.types.Operator, bpy_extras.io_utils.ExportHelp
     bl_label = "シーン出力"
     bl_descriptor = "シーン情報をExportします"
     #出力するファイルの拡張子
-    #filename_ext = ".scene"
     filename_ext = ".json"
 
     def write_and_print(self, file, str):
@@ -144,6 +143,10 @@ class MYADDON_OT_export_scene(bpy.types.Operator, bpy_extras.io_utils.ExportHelp
         transform["scaling"] = (scale.x, scale.y, scale.z)
         #まとめて1個分のjsonオブジェクトに登録
         json_object["transform"] = transform
+
+        #カスタムプロパティ'無効オプション'
+        if "disabled" in object:
+            json_object["disabled"] = object["disabled"]
 
         #カスタムプロパティ'file_name'
         if "file_name" in object:
